@@ -10,3 +10,10 @@
         {% endfor %}
     {% endfor %}
 {% endblock %}
+{% block base_body_script %}
+    {{ parent() }}
+    <script>
+        window.easterConfetti = {{ app.session.get('showEasterConfetti') ? 'true' : 'false' }};
+    </script>
+    {% do app.session.remove('showEasterConfetti') %}
+{% endblock %}
