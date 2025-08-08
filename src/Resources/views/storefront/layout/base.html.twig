@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/layout/base.html.twig' %}
+
+{% block base_flashbags %}
+    {{ parent() }}
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <script>
+                alert("{{ message|escape('js') }}");
+            </script>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

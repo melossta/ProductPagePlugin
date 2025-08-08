@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="SwagExamplePlugin\Commands\ExampleCommand">
+            <argument type="service" id="kernel"/>
+            <tag name="console.command"/>
+        </service>
+        <service id="SwagExamplePlugin\Commands\InstallPluginCommand">
+            <tag name="console.command"/>
+
+        </service>
+<!--        <service id="SwagExamplePlugin\Controller\ExampleController" public="true">-->
+<!--            <call method="setContainer">-->
+<!--                <argument type="service" id="service_container"/>-->
+<!--            </call>-->
+<!--            <argument type="service" id="product.repository"/>-->
+<!--            <argument type="service" id="SwagExamplePlugin\Service\ExampleServiceInterface"/>-->
+
+<!--        </service>-->
+
+
+
+        <service id="SwagExamplePlugin\Controller\SecondExampleController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+        <service id="SwagExamplePlugin\Controller\AdminExampleController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+
+<!--Service and Service interface injected and using decorator -->
+        <service id="SwagExamplePlugin\Service\ExampleService" public="true" />
+
+        <service id="SwagExamplePlugin\Service\ExampleServiceInterface" alias="SwagExamplePlugin\Service\ExampleService" public="true" />
+
+        <service id="SwagExamplePlugin\Service\ExampleServiceDecorator"
+                 decorates="SwagExamplePlugin\Service\ExampleServiceInterface"
+                 public="true">
+            <argument type="service" id="SwagExamplePlugin\Service\ExampleServiceDecorator.inner" />
+        </service>
+
+
+<!--Using setter injection instead of the constructor-->
+<!--        <service id="SwagExamplePlugin\Controller\ExampleController" public="true">-->
+<!--            <call method="setContainer">-->
+<!--                <argument type="service" id="service_container"/>-->
+<!--            </call>-->
+<!--            <call method="setDependencies">-->
+<!--                <argument type="service" id="product.repository"/>-->
+<!--                <argument type="service" id="SwagExamplePlugin\Service\ExampleServiceInterface"/>-->
+<!--            </call>-->
+
+<!--        </service>-->
+        <service id="SwagExamplePlugin\Controller\ExampleController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+
+            </call>
+            <argument type="service" id="Shopware\Core\System\StateMachine\StateMachineRegistry"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="example.repository"/>
+            <argument type="service" id="SwagExamplePlugin\Service\ExampleServiceInterface"/>
+        </service>
+
+        <service id="SwagExamplePlugin\Core\Checkout\IphoneDiscountProcessor">
+            <tag name="shopware.cart.processor" priority="4500"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\Price\PercentagePriceCalculator"/>
+        </service>
+        <service id="SwagExamplePlugin\Core\Checkout\EasterDiscountProcessor">
+            <tag name="shopware.cart.processor" priority="4500"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\Price\PercentagePriceCalculator"/>
+        </service>
+
+        <service id="SwagExamplePlugin\Subscriber\ProductPageSubscriber" public="true">
+            <argument type="service" id="request_stack" />
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="SwagExamplePlugin\Subscriber\EasterProductSubscriber">
+            <argument type="service"    id="request_stack" />
+            <argument id="logger" type="service"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>

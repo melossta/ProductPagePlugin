@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/utilities/alert.html.twig' %}
+
+{% block utilities_alert %}
+    {{ parent() }}
+
+    {# Custom Easter success flash type #}
+    {% for message in app.flashes('easter_success') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}

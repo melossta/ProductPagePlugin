@@ -1,0 +1,27 @@
+{
+    "name": "swag-example-plugin/swag-example-plugin",
+    "description": "swag-example-plugin/swag-example-plugin",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "SwagExamplePlugin\\SwagExamplePlugin",
+        "label": {
+            "de-DE": "Products on Storefront plugin",
+            "en-GB": "Products on Storefront plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "SwagExamplePlugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SwagExamplePlugin\\Tests\\": "tests/"
+        }
+    }
+}

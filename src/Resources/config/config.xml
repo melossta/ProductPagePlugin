@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Personal Information</title>
+        <title lang="de-DE">Persönliche Informationen</title>
+        <input-field>
+            <name>name</name>
+            <label>Name</label>
+            <label lang="de-DE">Name</label>
+            <required>true</required>
+            <placeholder>Enter your name</placeholder>
+        </input-field>
+        <input-field>
+            <name>Surname</name>
+            <label>Surname</label>
+            <label lang="de-DE">Nachname</label>
+            <required>true</required>
+            <placeholder>Enter your Surname</placeholder>
+        </input-field>
+    </card>
+
+    <card>
+        <component name="sw-snippet-field">
+            <name>snippetField</name>
+            <label>Snippet</label>
+            <snippet>swagExample.test.snippet</snippet>
+        </component>
+    </card>
+
+    <card>
+        <component name="sw-text-editor">
+            <name>textEditor</name>
+            <label>Description</label>
+        </component>
+    </card>
+
+    <card>
+        <title>Add Media</title>
+        <component name="sw-media-field">
+            <name>pluginMedia</name>
+            <label>Upload media</label>
+        </component>
+    </card>
+
+
+    <card>
+        <title>Select Products</title>
+        <component name="sw-entity-single-select">
+            <name>sampleProduct</name>
+            <entity>product</entity>
+            <label>Pick a product</label>
+        </component>
+        <component name="sw-entity-multi-id-select">
+            <name>multipleProducts</name>
+            <entity>language</entity>
+            <label>Select products</label>
+        </component>
+    </card>
+
+
+    <card>
+        <title>Select a Size</title>
+        <input-field type="single-select">
+            <name>size</name>
+            <label>Size</label>
+            <defaultValue>M</defaultValue>
+            <options>
+                <option>
+                    <id>XL</id>
+                    <name>Extra Large</name>
+                </option>
+                <option>
+                    <id>L</id>
+                    <name>Large</name>
+                </option>
+                <option>
+                    <id>M</id>
+                    <name>Medium</name>
+                </option>
+                <option>
+                    <id>S</id>
+                    <name>Small</name>
+                </option>
+                <option>
+                    <id>XS</id>
+                    <name>Extra Small</name>
+                </option>
+
+            </options>
+
+
+
+        </input-field>
+    </card>
+
+
+
+    <card>
+        <title>Example configuration</title>
+        <title lang="de-DE">Beispielkonfiguration</title>
+
+
+
+        <input-field type="textarea">
+            <name>description</name>
+            <label>Description</label>
+            <label lang="de-DE">Beschreibung</label>
+            <required>false</required>
+            <placeholder>Enter your Description</placeholder>
+        </input-field>
+    </card>
+
+
+
+
+</config>

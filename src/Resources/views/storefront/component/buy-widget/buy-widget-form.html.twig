@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+
+{% block buy_widget_buy_button_container %}
+    {{ parent() }}
+    <div class="alert alert-info mt-3">
+        This is a test flash message inside the Buy Widget form!
+    </div>
+{% endblock %}
